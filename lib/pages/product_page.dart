@@ -174,12 +174,20 @@ class _ProductPageState extends State<ProductPage> {
           CarouselSlider(
             items: widget.product.galleries
                 ?.map(
-                  (image) => Image.network(
-                    image.url?.split('https://farid1.online//storage/').last ??
-                        '',
-                    width: MediaQuery.of(context).size.width,
-                    height: 350,
-                    // fit: BoxFit.cover,
+                  (image) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Image.network(
+                      // ignore: unnecessary_null_comparison
+                      image != null
+                          ? image.url!
+                          : 'https://i0.wp.com/fisip.umrah.ac.id/wp-content/uploads/2022/12/placeholder-2.png?fit=1200%2C800&ssl=1',
+                      fit: BoxFit.cover,
+                      // image.url?.split('https://farid1.online//storage/').last ??
+                      //     '',
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width,
+                      // fit: BoxFit.cover,
+                    ),
                   ),
                 )
                 .toList(),

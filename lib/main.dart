@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shamo/pages/AdminPage/EditItem/EditItem.dart';
+import 'package:shamo/pages/AdminPage/HomePage/HomePage.dart';
 import 'package:shamo/pages/cart_page.dart';
 import 'package:shamo/pages/checkout_page.dart';
 import 'package:shamo/pages/checkout_success_page.dart';
@@ -49,6 +51,8 @@ class MyApp extends StatelessWidget {
           '/cart': (context) => cartPage(),
           '/checkout': (context) => CheckoutPage(),
           '/checkout-success': (context) => CheckoutSuccessPage(),
+          '/admin-home': (context) => AdminHomePage(),
+          '/admin-edit': (context) => EditItem(),
         },
       ),
     );

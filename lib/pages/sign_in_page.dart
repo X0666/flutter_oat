@@ -4,14 +4,18 @@ import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/loading_button.dart';
 
+import '../models/user_model.dart';
+
 class SignInPage extends StatefulWidget {
   @override
   State<SignInPage> createState() => _SignInPageState();
 }
 
 class _SignInPageState extends State<SignInPage> {
-  TextEditingController emailController = TextEditingController(text: '');
-  TextEditingController passwordController = TextEditingController(text: '');
+  TextEditingController emailController =
+      TextEditingController(text: '1fa12rid31@yopmail.com');
+  TextEditingController passwordController =
+      TextEditingController(text: 'farid1010');
 
   bool isLoading = false;
   @override
@@ -27,7 +31,12 @@ class _SignInPageState extends State<SignInPage> {
         email: emailController.value.text,
         password: passwordController.value.text,
       )) {
-        Navigator.pushNamed(context, '/home');
+        userModel user = authProvider.user;
+        if (user.roles == "ADMIN") {
+          Navigator.pushNamed(context, '/admin-home');
+        } else {
+          Navigator.pushNamed(context, '/home');
+        }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(

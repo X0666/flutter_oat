@@ -199,8 +199,6 @@ class _HomePageState extends State<HomePage> {
     //   );
     // }
 
-
-
     Widget popularProductsTitle() {
       return Container(
         margin: EdgeInsets.only(
@@ -268,7 +266,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: productProvider.products
               .map(
-                (product) => ProductTile(product),
+                (product) => ProductTile(product, false),
               )
               .toList(),
         ),
