@@ -86,6 +86,21 @@ class ProductService {
         ),
       );
     }
+
+    try {
+      var response = await request.send();
+
+      // Check the response status
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        print('Upload failed with status ${response.statusCode}');
+        return false;
+      }
+    } catch (error) {
+      print('Error uploading: $error');
+      return false;
+    }
   }
 
   Future<dynamic> updateProduct(
