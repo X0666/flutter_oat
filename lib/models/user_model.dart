@@ -4,6 +4,7 @@ class userModel {
   String? email;
   String? username;
   String? profilePhotoUrl;
+  String? roles;
   String? token;
 
   userModel({
@@ -12,6 +13,7 @@ class userModel {
     this.email,
     this.username,
     this.profilePhotoUrl,
+    this.roles,
     this.token,
   });
 
@@ -21,6 +23,7 @@ class userModel {
     email = json['email'];
     username = json['username'];
     profilePhotoUrl = json['profile_photo_url'];
+    roles = json['roles'];
     token = json['token'];
   }
 
@@ -31,6 +34,7 @@ class userModel {
       'email': email,
       'username': username,
       'profile_photo_url': profilePhotoUrl,
+      'roles': roles,
       'token': token,
     };
   }

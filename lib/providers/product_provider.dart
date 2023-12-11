@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shamo/models/category_model.dart';
 import 'package:shamo/models/product_model.dart';
 import 'package:shamo/services/product_service.dart';
 
@@ -15,7 +18,38 @@ class ProductProvider with ChangeNotifier {
   Future<List<ProductModel>?> getProducts() async {
     try {
       var resp = await ProductService().getProducts();
+      print("service getProduct ${resp}");
       _products = resp;
+      return resp;
+    } catch (e) {
+      print('err: $e');
+      return null;
+    }
+  }
+
+  Future<dynamic> deleteProducts(String token, String id) async {
+    try {
+      await ProductService().deleteProduct(token, id);
+      return true;
+    } catch (e) {
+      print('err: $e');
+      return null;
+    }
+  }
+
+  //Categories
+  List<CategoryModel> _categories = [];
+  List<CategoryModel> get categories => _categories;
+
+  set categories(List<CategoryModel> data) {
+    _categories = data;
+    notifyListeners();
+  }
+
+  Future<List<CategoryModel>?> getCategories() async {
+    try {
+      var resp = await ProductService().getCategory();
+      _categories = resp;
       return resp;
     } catch (e) {
       print('err: $e');

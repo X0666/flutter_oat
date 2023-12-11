@@ -12,12 +12,12 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = product.galleries?[0].url ?? '';
-    final splitter = url.split('https://farid1.online//storage/');
+    final url = product.galleries!.isNotEmpty ? product.galleries![0].url : '';
+    final splitter = url!.split('https://farid1.online//storage/');
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
     return GestureDetector(
       onTap: () {
-                Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => ProductPage(product),
@@ -41,8 +41,9 @@ class ProductCard extends StatelessWidget {
               height: 30,
             ),
             Image.network(
-              splitter.last ??
-                  'https://i0.wp.com/fisip.umrah.ac.id/wp-content/uploads/2022/12/placeholder-2.png?fit=1200%2C800&ssl=1',
+              url != ""
+                  ? url
+                  : 'https://i0.wp.com/fisip.umrah.ac.id/wp-content/uploads/2022/12/placeholder-2.png?fit=1200%2C800&ssl=1',
               width: 215,
               height: 150,
               fit: BoxFit.cover,
