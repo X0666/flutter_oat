@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shamo/models/cart_model.dart';
+import 'package:shamo/models/category_model.dart';
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/services/transaction_service.dart';
 
 class CartProvider with ChangeNotifier {
   List<CartModel> _carts = [];
@@ -73,6 +75,27 @@ class CartProvider with ChangeNotifier {
       return false;
     } else {
       return true;
+    }
+  }
+
+  List<CategoryModel> _paymentMethods = [];
+
+  List<CategoryModel> get paymentMethods => _paymentMethods;
+
+  set products(List<CategoryModel> datas) {
+    _paymentMethods = datas;
+    notifyListeners();
+  }
+
+  Future<List<CategoryModel>?> getPaymentMethods() async {
+    try {
+      var resp = await TransactionService().getPaymentMethods();
+      print("service getPaymentMethods ${resp}");
+      _paymentMethods = resp;
+      return resp;
+    } catch (e) {
+      print('err: $e');
+      return null;
     }
   }
 }

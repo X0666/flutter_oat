@@ -34,12 +34,14 @@ class CartCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   image: DecorationImage(
                     image: NetworkImage(
-                      '${cart.product!.galleries?[0].url!.split('https://farid1.online//storage/').last}',
+                      cart.product!.galleries!.isNotEmpty
+                          ? cart.product!.galleries![0].url!
+                          : 'https://i0.wp.com/fisip.umrah.ac.id/wp-content/uploads/2022/12/placeholder-2.png?fit=1200%2C800&ssl=1',
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 12,
               ),
               Expanded(

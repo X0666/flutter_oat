@@ -4,6 +4,8 @@ import 'package:shamo/pages/AdminPage/EditItem/EditItem.dart';
 import 'package:shamo/pages/AdminPage/HomePage/HomePage.dart';
 import 'package:shamo/pages/cart_page.dart';
 import 'package:shamo/pages/checkout_page.dart';
+import 'package:shamo/pages/checkout_payment_method.dart';
+import 'package:shamo/pages/checkout_payment_waiting.dart';
 import 'package:shamo/pages/checkout_success_page.dart';
 import 'package:shamo/pages/edit_profile_page.dart';
 import 'package:shamo/pages/home/main_page.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
           '/checkout-success': (context) => CheckoutSuccessPage(),
           '/admin-home': (context) => AdminHomePage(),
           '/admin-edit': (context) => EditItem(),
+          '/payment-method': (context) => PaymentMethod(),
+          '/payment-waiting': (context) => CheckoutWaitingPage(),
         },
       ),
     );

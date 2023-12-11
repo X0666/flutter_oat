@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shamo/models/user_model.dart';
+import 'package:shamo/pages/checkout_payment_method.dart';
+import 'package:shamo/providers/auth_provider.dart';
 import 'package:shamo/providers/cart_provider.dart';
+import 'package:shamo/providers/transaction_provider.dart';
 import 'package:shamo/theme.dart';
 import 'package:shamo/widgets/checkout_card.dart';
 
@@ -8,13 +12,41 @@ class CheckoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartProvider cartProvider = Provider.of<CartProvider>(context);
+    TransactionProvider transactionProvider =
+        Provider.of<TransactionProvider>(context);
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    userModel user = authProvider.user;
+
+    goToPaymentMethods() async {
+      var resp = await Provider.of<TransactionProvider>(context, listen: false)
+          .checkout(
+        user.token!,
+        cartProvider.carts,
+        cartProvider.totalPrice(),
+      );
+
+      print('transaction $resp');
+
+      await Provider.of<CartProvider>(context, listen: false)
+          .getPaymentMethods();
+
+      
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PaymentMethod(
+            id: resp.id,
+          ),
+        ),
+      );
+    }
 
     PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Checkout Details',
         ),
       );
@@ -27,7 +59,7 @@ class CheckoutPage extends StatelessWidget {
         ),
         children: [
           //Note: LIST ITEMS
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Container(
@@ -260,8 +292,12 @@ class CheckoutPage extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/checkout-success', (route) => false);
+                // Navigator.pushNamedAndRemoveUntil(
+                //     context, '/checkout-success', (route) => false);
+
+                // Navigator.pushNamedAndRemoveUntil(
+                //     context, '/payment-method', (route) => false);
+                goToPaymentMethods();
               },
               style: TextButton.styleFrom(
                   backgroundColor: primaryColor,
