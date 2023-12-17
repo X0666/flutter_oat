@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 import 'package:shamo/models/category_model.dart';
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/models/product_payment_model.dart';
 
 class ProductService {
   String baseUrl = 'https://farid1.online/api';
@@ -23,6 +24,28 @@ class ProductService {
       print('getProducts ${data.length}');
       for (var item in data) {
         products.add(ProductModel.fromJson(item));
+      }
+
+      return products;
+    } else {
+      throw Exception('Gagal Get Products!');
+    }
+  }
+
+  Future<List<PoductPayments>> getProductsPayment(String token) async {
+    var url = Uri.parse('$baseUrl/admin/transaction');
+    var headers = {
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    };
+    var response = await http.get(url, headers: headers);
+
+    if (response.statusCode == 200) {
+      List data = jsonDecode(response.body)['data']['data'];
+      List<PoductPayments> products = [];
+      print('getProductsPayment ${data.length}');
+      for (var item in data) {
+        products.add(PoductPayments.fromJson(item));
       }
 
       return products;

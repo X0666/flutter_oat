@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/pages/AdminPage/EditItem/EditItem.dart';
 import 'package:shamo/pages/AdminPage/HomePage/HomePage.dart';
+import 'package:shamo/pages/AdminPage/HomePage/ListOrder.dart';
 import 'package:shamo/pages/cart_page.dart';
 import 'package:shamo/pages/checkout_page.dart';
 import 'package:shamo/pages/checkout_payment_method.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
           '/admin-edit': (context) => EditItem(),
           '/payment-method': (context) => PaymentMethod(),
           '/payment-waiting': (context) => CheckoutWaitingPage(),
+          '/list-order': (context) => ListOrder(),
         },
       ),
     );

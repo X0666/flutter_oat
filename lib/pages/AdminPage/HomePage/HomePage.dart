@@ -34,6 +34,13 @@ class _AdminHomePageState extends State<AdminHomePage> {
       });
     }
 
+    toListData() async {
+      await Provider.of<ProductProvider>(context, listen: false)
+          .getProductsPayments(user.token!);
+
+      Navigator.pushNamed(context, '/list-order');
+    }
+
     Widget header() {
       return Container(
         padding:
@@ -62,7 +69,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
             GestureDetector(
               onTap: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, '/sign-in', (route) => false);
+                    context, '/sign-in', (route) => true);
               },
               child: Image.asset(
                 'assets/button_exit.png',
@@ -89,8 +96,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ListOrder()));
+                toListData();
               },
               child: Container(
                 width: 100,

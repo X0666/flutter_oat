@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shamo/models/category_model.dart';
 import 'package:shamo/models/product_model.dart';
+import 'package:shamo/models/product_payment_model.dart';
 import 'package:shamo/services/product_service.dart';
 
 class ProductProvider with ChangeNotifier {
@@ -20,6 +21,27 @@ class ProductProvider with ChangeNotifier {
       var resp = await ProductService().getProducts();
       print("service getProduct ${resp}");
       _products = resp;
+      return resp;
+    } catch (e) {
+      print('err: $e');
+      return null;
+    }
+  }
+
+  List<PoductPayments> _productsTransactions = [];
+
+  List<PoductPayments> get productsTransactions => _productsTransactions;
+
+  set productsTransactions(List<PoductPayments> data) {
+    _productsTransactions = data;
+    notifyListeners();
+  }
+
+  Future<List<PoductPayments>?> getProductsPayments(String token) async {
+    try {
+      var resp = await ProductService().getProductsPayment(token);
+      print("service getProductsPayment ${resp}");
+      _productsTransactions = resp;
       return resp;
     } catch (e) {
       print('err: $e');
