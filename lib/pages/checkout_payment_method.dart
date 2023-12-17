@@ -127,7 +127,7 @@ class _PaymentMethodState extends State<PaymentMethod> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("Norek: ${e.accountNumber}"),
+                    Text("Nomor Rekening: ${e.accountNumber}"),
                     const Text("A/N: Farid"),
                   ],
                 ),

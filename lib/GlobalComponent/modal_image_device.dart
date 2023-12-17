@@ -48,7 +48,7 @@ class ModalImageDevice extends StatelessWidget {
               Center(
                 child: Padding(
                   child: Text(
-                    'Select Device',
+                    'Photo',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -70,13 +70,15 @@ class ModalImageDevice extends StatelessWidget {
                   onTap: () async {
                     final files = await helper.pickImage();
                     Navigator.pop(context);
-                    if (files != null) {
-                      final croppedFile = await helper.crop(
-                          file: files, ratioX: ratioX, rationY: ratioY);
-                      if (croppedFile != null) {
-                        onPressed!(File(croppedFile.path));
-                      }
-                    }
+                    // if (files != null) {
+                    //   final croppedFile = await helper.crop(
+                    //       file: files, ratioX: ratioX, rationY: ratioY);
+                    //   if (croppedFile != null) {
+                    onPressed!(
+                      File(files!.path),
+                    );
+                    //   }
+                    // }
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -95,49 +97,49 @@ class ModalImageDevice extends StatelessWidget {
                           color: blackColor,
                         ),
                         SizedBox(width: 20),
-                        Text("Galery"),
+                        Text("Gallery"),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () async {
-                    final files =
-                        await helper.pickImage(source: ImageSource.camera);
-                    Navigator.pop(context);
-                    if (files != null) {
-                      final croppedFile = await helper.crop(
-                          file: files, ratioX: ratioX, rationY: ratioY);
-                      if (croppedFile != null) {
-                        onPressed!(File(croppedFile.path));
-                      }
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 16,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: backgroundColor2.withAlpha(100),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.camera_alt_rounded,
-                          size: 30,
-                          color: blackColor,
-                        ),
-                        SizedBox(width: 20),
-                        Text("Camera"),
-                      ],
-                    ),
-                  ),
-                )
+                // const SizedBox(
+                //   height: 10,
+                // ),
+                // InkWell(
+                //   onTap: () async {
+                //     final files =
+                //         await helper.pickImage(source: ImageSource.camera);
+                //     Navigator.pop(context);
+                //     if (files != null) {
+                //       final croppedFile = await helper.crop(
+                //           file: files, ratioX: ratioX, rationY: ratioY);
+                //       if (croppedFile != null) {
+                //         onPressed!(File(croppedFile.path));
+                //       }
+                //     }
+                //   },
+                //   child: Container(
+                //     padding: const EdgeInsets.symmetric(
+                //       vertical: 10,
+                //       horizontal: 16,
+                //     ),
+                //     decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(10),
+                //       color: backgroundColor2.withAlpha(100),
+                //     ),
+                //     child: Row(
+                //       children: [
+                //         Icon(
+                //           Icons.camera_alt_rounded,
+                //           size: 30,
+                //           color: blackColor,
+                //         ),
+                //         SizedBox(width: 20),
+                //         Text("Camera"),
+                //       ],
+                //     ),
+                //   ),
+                // )
               ],
             ),
           ),

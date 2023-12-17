@@ -164,10 +164,6 @@ class _ProductPageState extends State<ProductPage> {
                     Icons.chevron_left,
                   ),
                 ),
-                Icon(
-                  Icons.shopping_bag,
-                  color: backgroundColor4,
-                )
               ],
             ),
           ),
@@ -308,10 +304,11 @@ class _ProductPageState extends State<ProductPage> {
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Price Start From',
-                    style: primaryTextStyle,
+                    'Price',
+                    style: whiteTextStyle,
                   ),
                   Text(
                     '\$${widget.product.price}',

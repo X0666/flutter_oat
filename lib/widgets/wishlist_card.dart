@@ -29,9 +29,9 @@ class WishlistCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.network(
-              product.galleries![0].url!
-                  .split('https://farid1.online//storage/')
-                  .last,
+              product.galleries!.isNotEmpty
+                  ? product.galleries![0].url!
+                  : 'https://i0.wp.com/fisip.umrah.ac.id/wp-content/uploads/2022/12/placeholder-2.png?fit=1200%2C800&ssl=1',
               width: 60,
             ),
           ),

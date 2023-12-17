@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shamo/models/user_model.dart';
+import 'package:shamo/pages/AdminPage/HomePage/ListOrder.dart';
 import 'package:shamo/providers/product_provider.dart';
 import 'package:shamo/theme.dart';
 
@@ -84,6 +85,31 @@ class _AdminHomePageState extends State<AdminHomePage> {
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 20,
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ListOrder()));
+              },
+              child: Container(
+                width: 100,
+                height: 40,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  color: Colors.green,
+                ),
+                child: const Center(
+                  child: Text(
+                    'List Order',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
               ),
             ),
             InkWell(

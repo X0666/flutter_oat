@@ -30,7 +30,6 @@ class CheckoutPage extends StatelessWidget {
       await Provider.of<CartProvider>(context, listen: false)
           .getPaymentMethods();
 
-      
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -199,7 +198,7 @@ class CheckoutPage extends StatelessWidget {
                   children: [
                     Text(
                       'Product Quantity',
-                      style: secondaryTextStyle.copyWith(
+                      style: whiteTextStyle.copyWith(
                         fontSize: 12,
                       ),
                     ),
@@ -216,7 +215,7 @@ class CheckoutPage extends StatelessWidget {
                   children: [
                     Text(
                       'Product Price',
-                      style: secondaryTextStyle.copyWith(
+                      style: whiteTextStyle.copyWith(
                         fontSize: 12,
                       ),
                     ),
@@ -233,7 +232,7 @@ class CheckoutPage extends StatelessWidget {
                   children: [
                     Text(
                       'Shipping',
-                      style: secondaryTextStyle.copyWith(
+                      style: whiteTextStyle.copyWith(
                         fontSize: 12,
                       ),
                     ),

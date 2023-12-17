@@ -16,7 +16,7 @@ import '../../../providers/product_provider.dart';
 import '../../../services/product_service.dart';
 
 class EditItem extends StatefulWidget {
-  final title = "Add Product";
+  final title = "Product";
   int imageCount = 0;
   final ProductModel? product;
 
@@ -44,7 +44,7 @@ class _EditItemState extends State<EditItem> {
   void initState() {
     // TODO: implement initState
 
-    print('product update ${widget.product}');
+    print('product edit ${widget.product}');
 
     nameCtrl.text =
         widget.product != null ? '${widget.product?.name ?? ''}' : '';
@@ -52,8 +52,8 @@ class _EditItemState extends State<EditItem> {
         widget.product != null ? '${widget.product?.description ?? ''}' : '';
     priceCtrl.text =
         widget.product != null ? '${widget.product?.price ?? 0}' : '';
-    tagsCtrl.text =
-        widget.product != null ? '${widget.product?.tags ?? ''}' : '';
+    // tagsCtrl.text =
+    //     widget.product != null ? '${widget.product?.tags ?? ''}' : '';
 
     categoriesSelected =
         widget.product != null ? widget.product!.category!.id! : 0;
@@ -147,7 +147,7 @@ class _EditItemState extends State<EditItem> {
       if (nameCtrl.text.isEmpty ||
           descCtrl.text.isEmpty ||
           priceCtrl.text.isEmpty ||
-          tagsCtrl.text.isEmpty ||
+          // tagsCtrl.text.isEmpty ||
           categoriesSelected == 0) {
         setState(() {
           validate = false;
@@ -208,7 +208,7 @@ class _EditItemState extends State<EditItem> {
               ),
               child: Center(
                 child: Text(
-                  "+",
+                  "+ Add",
                   style: TextStyle(
                     fontSize: 40,
                     color: backgroundColor1,
@@ -383,26 +383,26 @@ class _EditItemState extends State<EditItem> {
             //     ),
             //   )),
             // ),
-            Container(
-              height: 50,
-              margin: EdgeInsets.symmetric(vertical: 10),
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: backgroundColor2,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Center(
-                  child: Expanded(
-                child: TextFormField(
-                  controller: tagsCtrl,
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Tags',
-                    hintStyle: SubtitleTextStyle,
-                  ),
-                  onChanged: (value) => validationCheck(),
-                ),
-              )),
-            ),
+            // Container(
+            //   height: 50,
+            //   margin: EdgeInsets.symmetric(vertical: 10),
+            //   padding: EdgeInsets.symmetric(horizontal: 16),
+            //   decoration: BoxDecoration(
+            //     color: backgroundColor2,
+            //     borderRadius: BorderRadius.circular(12),
+            //   ),
+            //   child: Center(
+            //       child: Expanded(
+            //     child: TextFormField(
+            //       controller: tagsCtrl,
+            //       decoration: InputDecoration.collapsed(
+            //         hintText: 'Tags',
+            //         hintStyle: SubtitleTextStyle,
+            //       ),
+            //       onChanged: (value) => validationCheck(),
+            //     ),
+            //   )),
+            // ),
           ],
         ),
       );

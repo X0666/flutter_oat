@@ -15,7 +15,7 @@ class _CheckoutWaitingPageState extends State<CheckoutWaitingPage> {
   @override
   void initState() {
     Future.delayed(
-      const Duration(seconds: 5),
+      const Duration(seconds: 10),
       () {
         return Navigator.pushNamedAndRemoveUntil(
           context,
@@ -67,7 +67,8 @@ class _CheckoutWaitingPageState extends State<CheckoutWaitingPage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text("Norek: ${widget.paymentMethod?.accountNumber}"),
+                  Text(
+                      "Nomor Rekening: ${widget.paymentMethod?.accountNumber}"),
                   const Text("A/N: Farid"),
                 ],
               ),

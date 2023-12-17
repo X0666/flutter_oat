@@ -239,7 +239,7 @@ class _ProductPageState extends State<ProductPageAdmin> {
                   backgroundColor: backgroundColor3,
                 ),
                 child: Text(
-                  'Update',
+                  'Edit',
                   style: primaryTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: semiBold,
